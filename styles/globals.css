@@ -1,0 +1,876 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: linear-gradient(135deg, #e8ecf5 0%, #f4f6f9 100%);
+  font-family: 'Noto Sans Tamil', sans-serif;
+  min-height: 100vh;
+  padding: 30px 16px;
+}
+
+.form-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border: 4px solid #1d2d6b;
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(29,45,107,0.15);
+}
+
+.inner-border {
+  border: 2px solid #1d2d6b;
+  margin: 12px;
+  padding: 36px 40px;
+}
+
+.logo-wrap {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #1d2d6b;
+  box-shadow: 0 4px 16px rgba(29,45,107,0.2);
+}
+
+.main-title {
+  text-align: center;
+  color: #1d2d6b;
+  font-weight: 700;
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.sub-title {
+  text-align: center;
+  color: #3a5bd9;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 36px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e8ecf5;
+}
+
+.field-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.field-label {
+  font-weight: 700;
+  color: #1d2d6b;
+  min-width: 200px;
+  padding-top: 8px;
+  font-size: 14px;
+}
+
+.field-input {
+  flex: 1;
+  border: none;
+  border-bottom: 2px dotted #aab;
+  border-radius: 0;
+  padding: 6px 4px;
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-size: 14px;
+  background: transparent;
+  transition: border-color 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+.field-input:focus {
+  border-bottom: 2px solid #1d2d6b;
+  background: #f8f9ff;
+}
+
+.range-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.range-sep {
+  color: #1d2d6b;
+  font-weight: 600;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+/* Signature Pad */
+.sig-section {
+  margin-top: 48px;
+  margin-bottom: 8px;
+}
+
+.sig-label {
+  font-weight: 700;
+  color: #1d2d6b;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.sig-canvas-wrap {
+  border: 2px dashed #1d2d6b;
+  border-radius: 8px;
+  background: #f8f9ff;
+  position: relative;
+  width: 280px;
+}
+
+.sig-canvas-wrap canvas {
+  display: block;
+  border-radius: 6px;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.sig-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #aab;
+  font-size: 12px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.sig-clear-btn {
+  margin-top: 6px;
+  background: none;
+  border: 1px solid #1d2d6b;
+  color: #1d2d6b;
+  border-radius: 4px;
+  padding: 3px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: 'Noto Sans Tamil', sans-serif;
+}
+
+.sig-clear-btn:hover { background: #1d2d6b; color: #fff; }
+
+/* Office Section */
+.office-section {
+  border: 2px solid #1d2d6b;
+  border-radius: 4px;
+  padding: 28px;
+  margin-top: 48px;
+  background: #f8f9ff;
+}
+
+.office-title {
+  text-align: center;
+  color: #1d2d6b;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 24px;
+  text-decoration: underline;
+}
+
+.account-info {
+  font-weight: 700;
+  color: #1d2d6b;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+/* Footer signatures */
+.footer-sigs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 48px;
+}
+
+.footer-sig-item {
+  text-align: center;
+}
+
+.footer-sig-line {
+  border-top: 1px solid #000;
+  width: 140px;
+  padding-top: 8px;
+  font-weight: 600;
+  color: #1d2d6b;
+  font-size: 14px;
+}
+
+/* Submit */
+.submit-wrap {
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 8px;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #1d2d6b, #3a5bd9);
+  color: #fff;
+  padding: 14px 56px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: 'Noto Sans Tamil', sans-serif;
+  box-shadow: 0 4px 16px rgba(29,45,107,0.3);
+  transition: all 0.2s;
+}
+
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(29,45,107,0.4); }
+.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  z-index: 9999;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.toast.success { background: #1d2d6b; color: #fff; }
+.toast.error { background: #dc3545; color: #fff; }
+
+@keyframes fadeIn { from { opacity: 0; bottom: 16px; } to { opacity: 1; bottom: 32px; } }
+
+@media (max-width: 600px) {
+  .inner-border { padding: 20px 16px; }
+  .field-row { flex-direction: column; gap: 4px; }
+  .field-label { min-width: unset; padding-top: 0; }
+  .footer-sigs { flex-direction: column; gap: 32px; align-items: center; }
+  .main-title { font-size: 20px; }
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .no-print { display: none !important; }
+  .form-wrapper { box-shadow: none; }
+}
+
+/* ── Login Page ─────────────────────────────────────────────── */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1d2d6b 0%, #3a5bd9 50%, #1d2d6b 100%);
+  padding: 24px 16px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.login-header {
+  background: linear-gradient(135deg, #1d2d6b, #2a3f9e);
+  padding: 36px 32px 28px;
+  text-align: center;
+}
+
+.login-logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,0.4);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  margin-bottom: 16px;
+}
+
+.login-school-name {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.login-school-sub {
+  color: rgba(255,255,255,0.75);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.login-body {
+  padding: 36px 32px 28px;
+}
+
+.login-title {
+  color: #1d2d6b;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.login-subtitle {
+  color: #888;
+  font-size: 13px;
+  margin-bottom: 28px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.login-field label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1d2d6b;
+}
+
+.login-field input {
+  padding: 12px 16px;
+  border: 2px solid #e0e4f0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Noto Sans Tamil', sans-serif;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #f8f9ff;
+}
+
+.login-field input:focus {
+  border-color: #1d2d6b;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(29,45,107,0.1);
+}
+
+.login-error {
+  background: #fff0f0;
+  border: 1px solid #ffcccc;
+  color: #dc3545;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #1d2d6b, #3a5bd9);
+  color: #fff;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Noto Sans Tamil', sans-serif;
+  box-shadow: 0 4px 16px rgba(29,45,107,0.35);
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+
+.login-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(29,45,107,0.45); }
+.login-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.login-footer {
+  background: #f8f9ff;
+  border-top: 1px solid #e8ecf5;
+  padding: 14px 32px;
+  text-align: center;
+  color: #999;
+  font-size: 11px;
+}
+
+@media (max-width: 480px) {
+  .login-body { padding: 28px 20px 20px; }
+  .login-header { padding: 28px 20px 22px; }
+  .login-school-name { font-size: 15px; }
+}
+
+/* ── Auth loading ───────────────────────────────────────────── */
+.auth-loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #1d2d6b;
+  font-weight: 600;
+}
+
+/* ── Topbar / Logout ────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.logout-btn {
+  background: none;
+  border: 2px solid #1d2d6b;
+  color: #1d2d6b;
+  padding: 6px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Noto Sans Tamil', sans-serif;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover { background: #1d2d6b; color: #fff; }
+
+/* ── Compact sig (officer) ──────────────────────────────────── */
+.sig-compact .sig-canvas-wrap { width: 160px; }
+.sig-compact .sig-label {
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.sig-compact .sig-clear-btn { font-size: 11px; padding: 2px 8px; }
+
+.footer-sigs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 32px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-sig-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Officer sig actions ────────────────────────────────────── */
+.officer-sig-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.sig-save-btn {
+  background: #1d2d6b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 3px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: 'Noto Sans Tamil', sans-serif;
+}
+
+.sig-save-btn:hover { background: #3a5bd9; }
+.sig-save-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ── Signed image display ───────────────────────────────────── */
+.sig-image-wrap {
+  border: 2px solid #c8d0e8;
+  border-radius: 8px;
+  background: #f8f9ff;
+  width: 160px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sig-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── Empty sig box ──────────────────────────────────────────── */
+.sig-empty-box {
+  border: 2px dashed #c8d0e8;
+  border-radius: 8px;
+  background: #f8f9ff;
+  width: 160px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbb;
+  font-size: 11px;
+}
+
+/* ── Topbar officer badge ───────────────────────────────────── */
+.topbar-officer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.officer-badge {
+  background: #e8ecf5;
+  color: #1d2d6b;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+/* ── Login back button ──────────────────────────────────────── */
+.login-back-btn {
+  background: none;
+  border: 2px solid #e0e4f0;
+  color: #888;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Noto Sans Tamil', sans-serif;
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+
+.login-back-btn:hover { border-color: #1d2d6b; color: #1d2d6b; }
+
+/* ── Officer unsigned plain line ────────────────────────────── */
+.sig-print-line {
+  width: 160px;
+  height: 80px;
+  border-bottom: 2px solid #1d2d6b;
+}
+
+/* ── Dashboard ──────────────────────────────────────────────── */
+.dash-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e8ecf5 0%, #f4f6f9 100%);
+  padding: 0;
+}
+
+.dash-notif {
+  background: #1d2d6b;
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+
+.dash-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+.dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 28px;
+  box-shadow: 0 2px 12px rgba(29,45,107,0.1);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dash-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dash-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #1d2d6b;
+}
+
+.dash-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1d2d6b;
+  margin-bottom: 4px;
+}
+
+.dash-subtitle {
+  font-size: 13px;
+  color: #888;
+}
+
+.dash-header-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dash-form-btn {
+  background: #e8ecf5;
+  color: #1d2d6b;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Noto Sans Tamil', sans-serif;
+  transition: background 0.2s;
+}
+
+.dash-form-btn:hover { background: #d0d8f0; }
+
+/* Stats */
+.dash-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 12px rgba(29,45,107,0.08);
+  border-left: 4px solid #1d2d6b;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-card.stat-green { border-left-color: #28a745; }
+.stat-card.stat-orange { border-left-color: #fd7e14; }
+.stat-card.stat-blue { border-left-color: #3a5bd9; }
+
+.stat-num {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1d2d6b;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #888;
+  font-weight: 600;
+}
+
+/* Table */
+.dash-table-wrap {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(29,45,107,0.08);
+  overflow-x: auto;
+}
+
+.dash-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.dash-table thead tr {
+  background: #1d2d6b;
+  color: #fff;
+}
+
+.dash-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dash-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f2f8;
+  vertical-align: middle;
+}
+
+.dash-table tbody tr:hover { background: #f8f9ff; }
+.dash-table tbody tr.row-complete { background: #f0fff4; }
+.dash-table tbody tr.row-complete:hover { background: #e6ffed; }
+
+.td-name { font-weight: 600; color: #1d2d6b; }
+
+.dash-empty {
+  text-align: center;
+  color: #aaa;
+  padding: 40px;
+  font-size: 15px;
+}
+
+/* Badges */
+.sig-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.badge-yes { background: #d4edda; color: #28a745; }
+.badge-no  { background: #fde8e8; color: #dc3545; }
+
+.status-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pill-done    { background: #d4edda; color: #28a745; }
+.pill-pending { background: #fff3cd; color: #856404; }
+
+.sign-btn {
+  background: #1d2d6b;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Noto Sans Tamil', sans-serif;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.sign-btn:hover { background: #3a5bd9; }
+
+.signed-text {
+  color: #28a745;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  width: 380px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1d2d6b;
+  margin-bottom: 6px;
+}
+
+.modal-name {
+  color: #888;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.modal-cancel-btn {
+  background: #f0f2f8;
+  color: #666;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: 'Noto Sans Tamil', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .dash-stats { grid-template-columns: repeat(2, 1fr); }
+  .dash-header { flex-direction: column; align-items: flex-start; }
+  .dash-title { font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+  .dash-stats { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── View page ──────────────────────────────────────────────── */
+.view-value {
+  flex: 1;
+  font-size: 14px;
+  color: #222;
+  padding: 6px 4px;
+  border-bottom: 2px dotted #dde;
+}
+
+.view-sig-img {
+  width: 280px;
+  height: 110px;
+  object-fit: contain;
+  border: 2px dashed #1d2d6b;
+  border-radius: 8px;
+  background: #f8f9ff;
+}
+
+.view-btn {
+  background: #e8ecf5;
+  color: #1d2d6b;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Noto Sans Tamil', sans-serif;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.view-btn:hover { background: #d0d8f0; }
+
+/* ── Delete button ──────────────────────────────────────────── */
+.delete-btn {
+  background: #fde8e8;
+  color: #dc3545;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover { background: #dc3545; color: #fff; }

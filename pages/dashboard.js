@@ -136,7 +136,7 @@ export default function Dashboard() {
           <div className="dash-header-left">
             <img src="/images/logo.jpg" alt="logo" className="dash-logo" />
             <div>
-              <h1 className="dash-title">திரு/ஸ்ரீகோணலிங்க மகா வித்தியாலயம்</h1>
+              <h1 className="dash-title">தி/ஸ்ரீகோணலிங்க மகா வித்தியாலயம்</h1>
               <p className="dash-subtitle">பழைய மாணவர் சங்கம் — {OFFICER_LABELS[role]} போர்டல் (Portal)</p>
             </div>
           </div>

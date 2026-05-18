@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 const OFFICER_KEYS = ['thalaivar', 'porulaalar', 'seyalaalar'];
-const OFFICER_LABELS = { thalaivar: 'தலைவர்', porulaalar: 'பொருளாளர்', seyalaalar: 'செயலாளர்' };
+const OFFICER_LABELS = { thalaivar: 'தலைவர் (President)', porulaalar: 'பொருளாளர் (Treasurer)', seyalaalar: 'செயலாளர் (Secretary)' };
 
 function useSigPad() {
   const ref = useRef(null);
@@ -85,7 +85,7 @@ export default function Home() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!form.fullName.trim()) return showToast('முழுப்பெயர் தேவை', 'error');
+    if (!form.fullName.trim()) return showToast('முழுப்பெயர் தேவை (Full name required)', 'error');
     setLoading(true);
     try {
       const res = await fetch('/api/submit', {
@@ -95,19 +95,21 @@ export default function Home() {
       });
       const data = await res.json();
       if (data.success) {
-        showToast('விண்ணப்பம் வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது! ✓', 'success');
+        showToast('விண்ணப்பம் வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது! (Submitted successfully!) ✓', 'success');
         setForm({ fullName: '', address: '', nicNumber: '', phone: '', whatsapp: '',
           studyYearFrom: '', studyYearTo: '', studyPeriodFrom: '', studyPeriodTo: '',
           occupation: '', familyStatus: '', membershipNumber: 'T/SRJ/KLMV/OSA/', receiptNumber: '' });
         memberSig.clear();
       } else {
-        showToast('பிழை: ' + data.error, 'error');
+        showToast('பிழை (Error): ' + data.error, 'error');
       }
     } catch {
-      showToast('சேவையகப் பிழை. மீண்டும் முயற்சிக்கவும்.', 'error');
+      showToast('சேவையகப் பிழை. மீண்டும் முயற்சிக்கவும். (Server error. Please try again.)', 'error');
     }
     setLoading(false);
   }
+
+  const roleLabel = role ? OFFICER_LABELS[role] : '';
 
   return (
     <>
@@ -118,13 +120,13 @@ export default function Home() {
           <div className="topbar no-print">
             {role ? (
               <div className="topbar-officer">
-                <span className="officer-badge">{OFFICER_LABELS[role]} உள்நுழைந்துள்ளார்</span>
-                <button className="logout-btn" onClick={() => router.push('/dashboard')}>டாஷ்போர்டு</button>
-                <button className="logout-btn" onClick={handleLogout}>வெளியேறு</button>
+                <span className="officer-badge">{roleLabel} உள்நுழைந்துள்ளார் (Logged in)</span>
+                <button className="logout-btn" onClick={() => router.push('/dashboard')}>டாஷ்போர்டு (Dashboard)</button>
+                <button className="logout-btn" onClick={handleLogout}>வெளியேறு (Logout)</button>
               </div>
             ) : (
               <button className="logout-btn" onClick={() => router.push('/login')}>
-                அலுவலர் உள்நுழைவு
+                அலுவலர் உள்நுழைவு (Officer Login)
               </button>
             )}
           </div>
@@ -135,42 +137,42 @@ export default function Home() {
           </div>
 
           <h2 className="main-title">திரு/ஸ்ரீகோணலிங்க மகா வித்தியாலயம்</h2>
-          <p className="sub-title">பழைய மாணவர் சங்க அங்கத்துவ விண்ணப்பப் படிவம்</p>
+          <p className="sub-title">பழைய மாணவர் சங்க அங்கத்துவ விண்ணப்பப் படிவம் (Old Students' Association Membership Form)</p>
 
           <form onSubmit={handleSubmit}>
 
-            <Field label="01. முழுப்பெயர்" name="fullName" value={form.fullName} onChange={handleChange} required />
-            <Field label="02. நிர.முகவரி" name="address" value={form.address} onChange={handleChange} />
-            <Field label="03. அடையாள அட்டை இலக்கம்" name="nicNumber" value={form.nicNumber} onChange={handleChange} />
-            <Field label="04. தொ.இலக்கம்" name="phone" value={form.phone} onChange={handleChange} type="tel" />
-            <Field label="05. வாட்ஸ்அப் இலக்கம்" name="whatsapp" value={form.whatsapp} onChange={handleChange} type="tel" />
+            <Field label="01. முழுப்பெயர் (Full Name)" name="fullName" value={form.fullName} onChange={handleChange} required />
+            <Field label="02. நிர.முகவரி (Address)" name="address" value={form.address} onChange={handleChange} />
+            <Field label="03. அடையாள அட்டை இலக்கம் (NIC Number)" name="nicNumber" value={form.nicNumber} onChange={handleChange} />
+            <Field label="04. தொ.இலக்கம் (Phone)" name="phone" value={form.phone} onChange={handleChange} type="tel" />
+            <Field label="05. வாட்ஸ்அப் இலக்கம் (WhatsApp)" name="whatsapp" value={form.whatsapp} onChange={handleChange} type="tel" />
 
             <div className="field-row">
-              <span className="field-label">06. கல்வி கற்ற காலம்</span>
+              <span className="field-label">06. கல்வி கற்ற காலம் (Study Period)</span>
               <div className="range-row">
                 <input className="field-input" name="studyYearFrom" value={form.studyYearFrom}
-                  onChange={handleChange} placeholder="தொடக்கம்" />
-                <span className="range-sep">வரை</span>
+                  onChange={handleChange} placeholder="தொடக்கம் (From)" />
+                <span className="range-sep">வரை (To)</span>
                 <input className="field-input" name="studyYearTo" value={form.studyYearTo} onChange={handleChange} />
               </div>
             </div>
 
             <div className="field-row">
-              <span className="field-label">07. கல்வி கற்ற காலப்பகுதி</span>
+              <span className="field-label">07. கல்வி கற்ற காலப்பகுதி (Study Duration)</span>
               <div className="range-row">
                 <input className="field-input" name="studyPeriodFrom" value={form.studyPeriodFrom}
-                  onChange={handleChange} placeholder="தொடக்கம்" />
-                <span className="range-sep">வரை</span>
+                  onChange={handleChange} placeholder="தொடக்கம் (From)" />
+                <span className="range-sep">வரை (To)</span>
                 <input className="field-input" name="studyPeriodTo" value={form.studyPeriodTo} onChange={handleChange} />
               </div>
             </div>
 
-            <Field label="08. தொழில்" name="occupation" value={form.occupation} onChange={handleChange} />
-            <Field label="09. குடும்ப நிலை" name="familyStatus" value={form.familyStatus} onChange={handleChange} />
+            <Field label="08. தொழில் (Occupation)" name="occupation" value={form.occupation} onChange={handleChange} />
+            <Field label="09. குடும்ப நிலை (Family Status)" name="familyStatus" value={form.familyStatus} onChange={handleChange} />
 
             {/* Member Signature */}
             <div className="sig-section">
-              <p className="sig-label">கையாப்பம் (இங்கே கையொப்பமிடவும்)</p>
+              <p className="sig-label">கையாப்பம் (Signature)</p>
               <div className="sig-canvas-wrap">
                 <canvas
                   ref={memberSig.ref}
@@ -183,23 +185,22 @@ export default function Home() {
                   onTouchMove={memberSig.move}
                   onTouchEnd={memberSig.stop}
                 />
-                {!memberSig.hasSig && <span className="sig-hint">இங்கே கையொப்பமிடவும்</span>}
+                {!memberSig.hasSig && <span className="sig-hint">இங்கே கையொப்பமிடவும் (Sign here)</span>}
               </div>
-              <button type="button" className="sig-clear-btn no-print" onClick={memberSig.clear}>அழி</button>
+              <button type="button" className="sig-clear-btn no-print" onClick={memberSig.clear}>அழி (Clear)</button>
             </div>
 
             {/* Office Section */}
             <div className="office-section">
-              <h4 className="office-title">அலுவலக பாவனைக்கு மட்டும்</h4>
+              <h4 className="office-title">அலுவலக பாவனைக்கு மட்டும் (Office Use Only)</h4>
 
-              <Field label="அங்கத்துவ இலக்கம்" name="membershipNumber"
+              <Field label="அங்கத்துவ இலக்கம் (Membership No.)" name="membershipNumber"
                 value={form.membershipNumber} onChange={handleChange} />
-              <Field label="அங்கத்துவ பணம் பற்றுச்சீட்டு இலக்கம்"
+              <Field label="அங்கத்துவ பணம் பற்றுச்சீட்டு இலக்கம் (Receipt No.)"
                 name="receiptNumber" value={form.receiptNumber} onChange={handleChange} />
 
-              <p className="account-info">கணக்கிலக்கம் - 71197640 (BOC)</p>
+              <p className="account-info">கணக்கிலக்கம் (Account No.) - 71197640 (BOC)</p>
 
-              {/* Officer signature lines — always blank on form, signed from dashboard */}
               <div className="footer-sigs">
                 {OFFICER_KEYS.map(key => (
                   <div key={key} className="footer-sig-item">
@@ -212,7 +213,7 @@ export default function Home() {
 
             <div className="submit-wrap no-print">
               <button type="submit" className="btn-submit" disabled={loading}>
-                {loading ? 'சமர்ப்பிக்கிறது...' : 'சமர்ப்பி'}
+                {loading ? 'சமர்ப்பிக்கிறது... (Submitting...)' : 'சமர்ப்பி (Submit)'}
               </button>
             </div>
 

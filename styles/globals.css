@@ -247,17 +247,149 @@ body {
 @keyframes fadeIn { from { opacity: 0; bottom: 16px; } to { opacity: 1; bottom: 32px; } }
 
 @media (max-width: 600px) {
-  .inner-border { padding: 20px 16px; }
+  body { padding: 12px 8px; }
+
+  .form-wrapper { border-width: 2px; }
+
+  .inner-border { padding: 16px 12px; margin: 6px; }
+
+  .logo { width: 72px; height: 72px; }
+
+  .main-title { font-size: 16px; }
+  .sub-title { font-size: 12px; margin-bottom: 20px; }
+
+  .topbar { flex-wrap: wrap; gap: 6px; }
+  .topbar-officer { flex-wrap: wrap; gap: 6px; }
+  .officer-badge { font-size: 11px; padding: 4px 10px; }
+  .logout-btn { font-size: 11px; padding: 5px 10px; }
+
   .field-row { flex-direction: column; gap: 4px; }
-  .field-label { min-width: unset; padding-top: 0; }
-  .footer-sigs { flex-direction: column; gap: 32px; align-items: center; }
-  .main-title { font-size: 20px; }
+  .field-label { min-width: unset; padding-top: 0; font-size: 13px; }
+  .field-input { font-size: 13px; }
+
+  .range-row { flex-wrap: wrap; gap: 6px; }
+  .range-row .field-input { min-width: 80px; }
+
+  .sig-canvas-wrap { width: 100% !important; }
+  .sig-canvas-wrap canvas { width: 100% !important; height: 90px !important; }
+
+  .office-section { padding: 16px 12px; }
+  .office-title { font-size: 14px; }
+
+  .footer-sigs { flex-direction: column; gap: 24px; align-items: center; }
+  .sig-print-line { width: 200px; }
+  .sig-image-wrap { width: 200px; height: 80px; }
+
+  .btn-submit { padding: 12px 32px; font-size: 14px; width: 100%; }
+
+  /* Login */
+  .login-body { padding: 20px 16px 16px; }
+  .login-header { padding: 24px 16px 18px; }
+  .login-school-name { font-size: 14px; }
+  .login-title { font-size: 18px; }
+  .login-btn { font-size: 14px; }
+  .login-back-btn { font-size: 13px; }
+
+  /* Dashboard */
+  .dash-container { padding: 12px 10px; }
+  .dash-header { flex-direction: column; align-items: flex-start; padding: 14px 16px; gap: 10px; }
+  .dash-header-left { gap: 10px; }
+  .dash-logo { width: 40px; height: 40px; }
+  .dash-title { font-size: 13px; }
+  .dash-subtitle { font-size: 11px; }
+  .dash-header-right { width: 100%; justify-content: flex-end; }
+  .dash-form-btn, .logout-btn { font-size: 11px; padding: 6px 10px; }
+
+  .dash-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-card { padding: 14px 12px; }
+  .stat-num { font-size: 24px; }
+  .stat-label { font-size: 10px; }
+
+  .dash-table { font-size: 11px; }
+  .dash-table th { padding: 10px 8px; font-size: 11px; }
+  .dash-table td { padding: 8px 6px; }
+  .sign-btn { font-size: 10px; padding: 4px 8px; }
+  .view-btn { font-size: 10px; padding: 4px 8px; }
+  .delete-btn { font-size: 11px; padding: 4px 7px; }
+  .status-pill { font-size: 10px; padding: 3px 7px; }
+
+  /* Modal */
+  .modal-box { width: 92vw; padding: 20px 16px; }
+  .modal-title { font-size: 15px; }
+  .sig-canvas-wrap[style] { width: 100% !important; }
+  .modal-box canvas { width: 100% !important; }
+
+  /* View page */
+  .view-value { font-size: 13px; }
+  .view-sig-img { width: 100%; height: 80px; }
 }
 
 @media print {
-  body { background: #fff; padding: 0; }
+  @page {
+    size: A4 portrait;
+    margin: 15mm 15mm 15mm 15mm;
+  }
+
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body { background: #fff !important; padding: 0 !important; margin: 0 !important; }
+
   .no-print { display: none !important; }
-  .form-wrapper { box-shadow: none; }
+
+  .form-wrapper {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    border: 2px solid #1d2d6b !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+  }
+
+  .inner-border {
+    margin: 6px !important;
+    padding: 16px 20px !important;
+    border: 1.5px solid #1d2d6b !important;
+  }
+
+  .logo { width: 72px !important; height: 72px !important; }
+
+  .main-title { font-size: 18px !important; }
+  .sub-title { font-size: 12px !important; margin-bottom: 16px !important; padding-bottom: 10px !important; }
+
+  .field-row { margin-bottom: 10px !important; }
+  .field-label { font-size: 11px !important; min-width: 160px !important; }
+  .field-input, .view-value { font-size: 11px !important; }
+
+  .sig-section { margin-top: 16px !important; margin-bottom: 4px !important; }
+  .sig-label { font-size: 11px !important; }
+
+  .view-sig-img {
+    width: 180px !important;
+    height: 70px !important;
+  }
+
+  .office-section {
+    margin-top: 16px !important;
+    padding: 14px !important;
+  }
+
+  .office-title { font-size: 13px !important; margin-bottom: 12px !important; }
+  .account-info { font-size: 11px !important; margin-bottom: 12px !important; }
+
+  .footer-sigs { margin-top: 20px !important; }
+
+  .sig-image-wrap {
+    width: 130px !important;
+    height: 60px !important;
+  }
+
+  .sig-print-line {
+    width: 130px !important;
+    height: 60px !important;
+  }
+
+  .dash-page, .dash-container, .dash-header,
+  .dash-stats, .dash-table-wrap { display: none !important; }
 }
 
 /* ── Login Page ─────────────────────────────────────────────── */
@@ -821,6 +953,8 @@ body {
   .dash-stats { grid-template-columns: repeat(2, 1fr); }
   .dash-header { flex-direction: column; align-items: flex-start; }
   .dash-title { font-size: 15px; }
+  .dash-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .dash-table { min-width: 600px; }
 }
 
 @media (max-width: 480px) {

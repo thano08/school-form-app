@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-const OFFICER_LABELS = { thalaivar: 'தலைவர்', porulaalar: 'பொருளாளர்', seyalaalar: 'செயலாளர்' };
+const OFFICER_LABELS = { thalaivar: 'தலைவர் (President)', porulaalar: 'பொருளாளர் (Treasurer)', seyalaalar: 'செயலாளர் (Secretary)' };
 
 export default function ViewApplication() {
   const router = useRouter();
@@ -14,14 +14,14 @@ export default function ViewApplication() {
     if (!id) return;
     fetch(`/api/application/${id}`)
       .then(r => {
-        if (!r.ok) throw new Error('Unauthorized or not found');
+        if (!r.ok) throw new Error('அனுமதி இல்லை (Unauthorized)');
         return r.json();
       })
       .then(data => { setApp(data); setLoading(false); })
       .catch(e => { setError(e.message); setLoading(false); });
   }, [id]);
 
-  if (loading) return <div className="auth-loading">ஏற்றுகிறது...</div>;
+  if (loading) return <div className="auth-loading">ஏற்றுகிறது... (Loading...)</div>;
   if (error) return <div className="auth-loading" style={{ color: '#dc3545' }}>{error}</div>;
   if (!app) return null;
 
@@ -29,57 +29,51 @@ export default function ViewApplication() {
     <div className="form-wrapper" style={{ margin: '30px auto' }}>
       <div className="inner-border">
 
-        {/* Actions */}
         <div className="topbar no-print">
-          <button className="logout-btn" onClick={() => router.back()}>← திரும்பு</button>
+          <button className="logout-btn" onClick={() => router.back()}>← திரும்பு (Back)</button>
           <button className="sig-save-btn" style={{ padding: '6px 18px' }} onClick={() => window.print()}>
-            🖨️ அச்சிடு / Print
+            🖨️ அச்சிடு (Print)
           </button>
         </div>
 
-        {/* Logo & Title */}
         <div className="logo-wrap">
           <img src="/images/logo.jpg" alt="School Logo" className="logo" />
         </div>
         <h2 className="main-title">திரு/ஸ்ரீகோணலிங்க மகா வித்தியாலயம்</h2>
-        <p className="sub-title">பழைய மாணவர் சங்க அங்கத்துவ விண்ணப்பப் படிவம்</p>
+        <p className="sub-title">பழைய மாணவர் சங்க அங்கத்துவ விண்ணப்பப் படிவம் (Membership Form)</p>
 
-        {/* Fields */}
-        <ViewField label="01. முழுப்பெயர்" value={app.fullName} />
-        <ViewField label="02. நிர.முகவரி" value={app.address} />
-        <ViewField label="03. அடையாள அட்டை இலக்கம்" value={app.nicNumber} />
-        <ViewField label="04. தொ.இலக்கம்" value={app.phone} />
-        <ViewField label="05. Wtsp. இலக்கம்" value={app.whatsapp} />
+        <ViewField label="01. முழுப்பெயர் (Full Name)" value={app.fullName} />
+        <ViewField label="02. நிர.முகவரி (Address)" value={app.address} />
+        <ViewField label="03. அடையாள அட்டை இலக்கம் (NIC Number)" value={app.nicNumber} />
+        <ViewField label="04. தொ.இலக்கம் (Phone)" value={app.phone} />
+        <ViewField label="05. வாட்ஸ்அப் இலக்கம் (WhatsApp)" value={app.whatsapp} />
 
         <div className="field-row">
-          <span className="field-label">06. கல்வி கற்ற காலம்</span>
+          <span className="field-label">06. கல்வி கற்ற காலம் (Study Period)</span>
           <span className="view-value">{app.studyYearFrom} — {app.studyYearTo}</span>
         </div>
         <div className="field-row">
-          <span className="field-label">07. கல்வி கற்ற காலப்பகுதி</span>
+          <span className="field-label">07. கல்வி கற்ற காலப்பகுதி (Study Duration)</span>
           <span className="view-value">{app.studyPeriodFrom} — {app.studyPeriodTo}</span>
         </div>
 
-        <ViewField label="08. தொழில்" value={app.occupation} />
-        <ViewField label="09. குடும்ப நிலை" value={app.familyStatus} />
+        <ViewField label="08. தொழில் (Occupation)" value={app.occupation} />
+        <ViewField label="09. குடும்ப நிலை (Family Status)" value={app.familyStatus} />
 
-        {/* Member Signature */}
         <div className="sig-section">
-          <p className="sig-label">கையாப்பம்</p>
+          <p className="sig-label">கையாப்பம் (Signature)</p>
           {app.signature
             ? <img src={app.signature} alt="கையொப்பம்" className="view-sig-img" />
             : <div className="sig-print-line" />}
         </div>
 
-        {/* Office Section */}
         <div className="office-section">
-          <h4 className="office-title">அலுவலக பாவனைக்கு மட்டும்</h4>
+          <h4 className="office-title">அலுவலக பாவனைக்கு மட்டும் (Office Use Only)</h4>
 
-          <ViewField label="அங்கத்துவ இலக்கம்" value={app.membershipNumber} />
-          <ViewField label="அங்கத்துவ பணம் பற்றுச்சீட்டு இலக்கம்" value={app.receiptNumber} />
-          <p className="account-info">கணக்கிலக்கம் - 71197640 (BOC)</p>
+          <ViewField label="அங்கத்துவ இலக்கம் (Membership No.)" value={app.membershipNumber} />
+          <ViewField label="அங்கத்துவ பணம் பற்றுச்சீட்டு இலக்கம் (Receipt No.)" value={app.receiptNumber} />
+          <p className="account-info">கணக்கிலக்கம் (Account No.) - 71197640 (BOC)</p>
 
-          {/* Officer Signatures */}
           <div className="footer-sigs">
             {[
               { key: 'sigThalaivar',  role: 'thalaivar' },
@@ -96,9 +90,8 @@ export default function ViewApplication() {
           </div>
         </div>
 
-        {/* Submitted date */}
         <p style={{ textAlign: 'right', color: '#888', fontSize: 12, marginTop: 24 }}>
-          பதிவு தேதி: {new Date(app.submittedAt).toLocaleDateString('ta-LK')}
+          பதிவு தேதி (Submitted): {new Date(app.submittedAt).toLocaleDateString('ta-LK')}
         </p>
 
       </div>

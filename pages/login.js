@@ -34,7 +34,7 @@ export default function Login() {
       <div className="login-card">
         <div className="login-header">
           <img src="/images/logo.jpg" alt="School Logo" className="login-logo" />
-          <h1 className="login-school-name">திரு/ஸ்ரீகோணலிங்க மகா வித்தியாலயம்</h1>
+          <h1 className="login-school-name">தி/ஸ்ரீகோணலிங்க மகா வித்தியாலயம்</h1>
           <p className="login-school-sub">பழைய மாணவர் சங்கம் — அலுவலர் உள்நுழைவு (Officer Login)</p>
         </div>
 
@@ -79,7 +79,7 @@ export default function Login() {
         </div>
 
         <div className="login-footer">
-          <p>© 2025 திரு/ஸ்ரீகோணலிங்க மகா வித்தியாலயம் பழைய மாணவர் சங்கம்</p>
+          <p>© 2026 தி/ஸ்ரீகோணலிங்க மகா வித்தியாலயம் பழைய மாணவர் சங்கம்</p>
         </div>
       </div>
     </div>

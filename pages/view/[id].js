@@ -39,7 +39,7 @@ export default function ViewApplication() {
         <div className="logo-wrap">
           <img src="/images/logo.jpg" alt="School Logo" className="logo" />
         </div>
-        <h2 className="main-title">திரு/ஸ்ரீகோணலிங்க மகா வித்தியாலயம்</h2>
+        <h2 className="main-title">தி/ஸ்ரீகோணலிங்க மகா வித்தியாலயம்</h2>
         <p className="sub-title">பழைய மாணவர் சங்க அங்கத்துவ விண்ணப்பப் படிவம் (Membership Form)</p>
 
         <ViewField label="01. முழுப்பெயர் (Full Name)" value={app.fullName} />

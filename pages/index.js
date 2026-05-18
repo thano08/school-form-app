@@ -136,7 +136,7 @@ export default function Home() {
             <img src="/images/logo.jpg" alt="School Logo" className="logo" />
           </div>
 
-          <h2 className="main-title">திரு/ஸ்ரீகோணலிங்க மகா வித்தியாலயம்</h2>
+          <h2 className="main-title">தி/ஸ்ரீகோணலிங்க மகா வித்தியாலயம்</h2>
           <p className="sub-title">பழைய மாணவர் சங்க அங்கத்துவ விண்ணப்பப் படிவம் (Old Students' Association Membership Form)</p>
 
           <form onSubmit={handleSubmit}>
